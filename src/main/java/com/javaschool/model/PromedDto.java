@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample.model;
+package com.javaschool.model;
 
 import java.util.List;
 

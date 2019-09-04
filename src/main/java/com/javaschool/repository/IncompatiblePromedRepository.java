@@ -1,7 +1,7 @@
-package net.guides.springboot2.springboot2jpacrudexample.repository;
+package com.javaschool.repository;
 
-import net.guides.springboot2.springboot2jpacrudexample.model.IncompatiblePromed;
-import net.guides.springboot2.springboot2jpacrudexample.model.Promed;
+import com.javaschool.model.IncompatiblePromed;
+import com.javaschool.model.Promed;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

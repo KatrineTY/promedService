@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample.security;
+package com.javaschool.security;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

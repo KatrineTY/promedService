@@ -1,9 +1,9 @@
-package net.guides.springboot2.springboot2jpacrudexample.controller;
+package com.javaschool.controller;
 
-import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
-import net.guides.springboot2.springboot2jpacrudexample.model.Promed;
-import net.guides.springboot2.springboot2jpacrudexample.model.PromedDto;
-import net.guides.springboot2.springboot2jpacrudexample.services.PromedService;
+import com.javaschool.exception.ResourceNotFoundException;
+import com.javaschool.model.Promed;
+import com.javaschool.model.PromedDto;
+import com.javaschool.services.PromedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

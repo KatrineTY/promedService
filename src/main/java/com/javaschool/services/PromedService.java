@@ -1,8 +1,8 @@
-package net.guides.springboot2.springboot2jpacrudexample.services;
+package com.javaschool.services;
 
-import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
-import net.guides.springboot2.springboot2jpacrudexample.model.Promed;
-import net.guides.springboot2.springboot2jpacrudexample.model.PromedDto;
+import com.javaschool.exception.ResourceNotFoundException;
+import com.javaschool.model.Promed;
+import com.javaschool.model.PromedDto;
 
 import java.util.List;
 
@@ -17,4 +17,5 @@ public interface PromedService {
 
     public void deletePromed(Integer promedId) throws ResourceNotFoundException;
 
+    void subtractCount(String promedName, int count);
 }

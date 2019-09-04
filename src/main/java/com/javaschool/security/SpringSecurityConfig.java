@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample.security;
+package com.javaschool.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,19 +14,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest()
                 .authenticated().and()
-                // .formLogin().and()
                 .httpBasic();
         http.cors()
                 .and().authorizeRequests()
                 .anyRequest().permitAll()
                 .and().csrf().disable();
     }
-
-//    @Bean
-//    protected CorsConfigurationSource corsConfigurationSource() {
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-//        return source;
-//    }
 
 }

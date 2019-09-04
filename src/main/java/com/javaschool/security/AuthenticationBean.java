@@ -1,4 +1,4 @@
-package net.guides.springboot2.springboot2jpacrudexample.security;
+package com.javaschool.security;
 
 public class AuthenticationBean {
 
@@ -16,8 +16,4 @@ public class AuthenticationBean {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return String.format("HelloWorldBean [message=%s]", message);
-    }
 }
