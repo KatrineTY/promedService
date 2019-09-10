@@ -1,5 +1,6 @@
 package com.javaschool.telegram;
 
+import lombok.extern.slf4j.Slf4j;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -9,6 +10,7 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import javax.annotation.PostConstruct;
 
+@Slf4j
 public class TelegramBot extends AbilityBot {
 
     protected TelegramBot(String botToken, String botUsername, DefaultBotOptions botOptions) {
@@ -36,11 +38,12 @@ public class TelegramBot extends AbilityBot {
 
     }
 
-    public void sendMsg(String chatId, String s) {
+    public void sendMsg(String chatId, String message) {
+        log.info("Send telegram message: {}", message);
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
-        sendMessage.setText(s);
+        sendMessage.setText(message);
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {

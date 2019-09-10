@@ -9,7 +9,7 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class JmsConfig {
 
-    String BROKER_URL = "tcp://localhost:61616";
+    String BROKER_URL = "tcp://192.168.99.100:61616";
     String BROKER_USERNAME = "admin";
     String BROKER_PASSWORD = "admin";
 
