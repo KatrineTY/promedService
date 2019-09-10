@@ -39,11 +39,12 @@ public class PromedServiceImpl implements PromedService {
     public PromedDto getPromedById(Integer promedId) throws ResourceNotFoundException {
         Promed promed = promedRepository.findById(promedId)
                 .orElseThrow(() -> new ResourceNotFoundException("Promed not found for this id :: " + promedId));
-        List<IncompatiblePromed> incompatiblePromeds = incompatiblePromedRepository.findAllByPromed(promed).orElse(new ArrayList<>());
+        List<IncompatiblePromed> incompatiblePromeds = incompatiblePromedRepository.findAllByPromedOrIncompatiblePromed(promed, promed).orElse(new ArrayList<>());
         PromedDto promedDto = new PromedDto(promed, new ArrayList<>());
         if (!incompatiblePromeds.isEmpty()) {
             promedDto.setIncompatiblePromeds(incompatiblePromeds.stream()
-                    .map(IncompatiblePromed::getIncompatiblePromed)
+                    .map(incompPromed -> incompPromed.getPromed().equals(promed) ?
+                            incompPromed.getIncompatiblePromed() : incompPromed.getPromed())
                     .collect(Collectors.toList()));
         }
         return promedDto;
@@ -62,7 +63,9 @@ public class PromedServiceImpl implements PromedService {
                 .filter(promed -> promed.getName() != null).collect(Collectors.toList()));
         Promed promed = promedRepository.findById(promedId)
                 .orElseThrow(() -> new ResourceNotFoundException("Promed not found for this id :: " + promedId));
-        List<IncompatiblePromed> oldIncompatiblePromeds = incompatiblePromedRepository.findAllByPromed(promed).orElse(new ArrayList<>());
+        List<IncompatiblePromed> oldIncompatiblePromeds = incompatiblePromedRepository
+                .findAllByPromedOrIncompatiblePromed(promed, promed)
+                .orElse(new ArrayList<>());
 
         promed.setCount(promedDetails.getPromed().getCount());
         promed.setKind(promedDetails.getPromed().getKind());
@@ -90,7 +93,9 @@ public class PromedServiceImpl implements PromedService {
         Promed promed = promedRepository.findById(promedId)
                 .orElseThrow(() -> new ResourceNotFoundException("Promed not found for this id :: " + promedId));
 
-        List<IncompatiblePromed> incompatiblePromeds = incompatiblePromedRepository.findAllByPromed(promed).orElse(new ArrayList<>());
+        List<IncompatiblePromed> incompatiblePromeds = incompatiblePromedRepository
+                .findAllByPromedOrIncompatiblePromed(promed, promed)
+                .orElse(new ArrayList<>());
         if (!incompatiblePromeds.isEmpty()) {
             incompatiblePromedRepository.deleteAll(incompatiblePromeds);
         }

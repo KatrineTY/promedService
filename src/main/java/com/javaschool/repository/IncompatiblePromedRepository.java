@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface IncompatiblePromedRepository extends CrudRepository<IncompatiblePromed, Integer> {
-    Optional<List<IncompatiblePromed>> findAllByPromed(Promed promed);
+    Optional<List<IncompatiblePromed>> findAllByPromedOrIncompatiblePromed(Promed promed1, Promed promed2);
 
 
 }
